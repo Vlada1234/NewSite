@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div class="container">
+
+    <h2>Write new comment</h2>
+
+    <form action="#"
+          th:action="@{'/comment'}"
+          th:object="${comment}"
+          method="post">
+        <label>
+            <div class="alert-red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</div>
+            <textarea th:field="*{description}" placeholder="Write something valuable"></textarea>
+        </label>
+        <div>
+            <button class="green-btn" type="submit">Send</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

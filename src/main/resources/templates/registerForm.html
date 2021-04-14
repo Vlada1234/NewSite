@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container text-center">
+
+    <div>
+        <h1>User Registration</h1>
+    </div>
+
+    <form th:action="@{/register}"
+          style="max-width: 600px; margin: 0 auto;"
+          th:object="${user}"
+          method="post">
+
+        <div>
+            <label>
+                <div class="alert-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Username Error
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" th:field="*{email}" placeholder="Email"/>
+                </div>
+
+            </label>
+
+        <div>
+            <label>
+                <div class="alert-red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" th:field="*{username}" placeholder="Username"/>
+                </div>
+
+            </label>
+        </div>
+        <div>
+            <label>
+                <div class="alert-red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error
+                </div>
+                <input type="password" th:field="*{password}" placeholder="Password"/>
+            </label>
+        </div>
+        <div>
+            <button class="green-btn" type="submit">Register</button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
